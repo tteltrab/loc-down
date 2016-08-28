@@ -7,19 +7,19 @@ const isparta = require('isparta');
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
 
-gulp.task('eslint', () => {
-  return gulp.src([
+gulp.task('eslint', () =>
+  gulp.src([
     '**/*.js',
     '!coverage/**/*.js',
     '!node_modules/**/*.js',
   ])
   .pipe(eslint('.eslintrc'))
   .pipe(eslint.format())
-  .pipe(eslint.failOnError());
-});
+  .pipe(eslint.failOnError())
+);
 
-gulp.task('mocha', () => {
-  return gulp.src([
+gulp.task('mocha', () =>
+  gulp.src([
     '**/*.js',
     '!gulpfile.js',
     '!coverage/**/*.js',
@@ -43,7 +43,7 @@ gulp.task('mocha', () => {
       .pipe(istanbul.enforceThresholds({
         thresholds: { global: 100 },
       }));
-  });
-});
+  })
+);
 
 gulp.task('test', ['eslint', 'mocha']);

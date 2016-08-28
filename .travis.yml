@@ -9,4 +9,6 @@ deploy:
   on:
     tags: true
     repo: tteltrab/loc-down
-    branch: master
+branches:
+  only:
+    - master
