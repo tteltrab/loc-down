@@ -1,6 +1,6 @@
 'use strict';
 
-let git = require('simple-git')();
+const git = require('simple-git')();
 const randomString = require('randomstring');
 
 /**
@@ -25,7 +25,7 @@ module.exports = function checkLOC (repo, branch = 'master', loc) {
           if (err) {
             return reject(err);
           }
-          console.log(diffSummary)
+
           const { insertions, deletions } = diffSummary;
 
           return resolve(insertions + deletions <= loc);

@@ -26,7 +26,8 @@
     "gulp-istanbul": "^0.10.4",
     "gulp-mocha": "^2.2.0",
     "isparta": "^4.0.0",
-    "rewire": "^2.5.2"
+    "rewire": "^2.5.2",
+    "sinon": "^1.17.5"
   },
   "license": "MIT",
   "engines": {

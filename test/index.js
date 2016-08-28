@@ -1,9 +1,9 @@
-/* globals describe, it */
+/* globals describe, it, afterEach */
 'use strict';
 
 const expect = require('chai').expect;
-const git = require('simple-git')();
 const rewire = require('rewire');
+const sinon = require('sinon');
 
 const branch = 'master';
 const error = 'Danger, Will Robinson!';
@@ -11,32 +11,26 @@ const locDown = rewire('../index');
 const maxLOC = 300;
 const remote = 'git@github.com:tteltrab/loc-down.git';
 
+const gitMock = locDown.__get__('git');
+
 const setupTest = function setupTest (fetchError, diffError, insertions, deletions) {
-  locDown.__set__('git', {
-    addRemote: function mockGit () {
-      console.log(this);
-      return this;
-    },
-    diff: (options, then) => then(
-      null,
-`test/index.js | 9 ++++++---
-1 file changed, ${insertions} insertions(+), ${deletions} deletions(-))`
-    ),
-    diffSummary: diffError ?
-      function mockError (diffFrom, then) {
-        then(diffError);
-      }
-      : git.diffSummary,
-    fetch: function mockGit (remoteName, branchName, then) {
-      return then(fetchError);
-    },
-    removeRemote: function mockGit () {
-      return this;
-    },
-  });
+  sinon.stub(gitMock, 'addRemote', () => gitMock);
+  sinon.stub(gitMock, 'diffSummary', (diffFrom, then) => then(diffError, {
+    insertions,
+    deletions,
+  }));
+  sinon.stub(gitMock, 'fetch', (remoteName, branchName, then) => then(fetchError));
+  sinon.stub(gitMock, 'removeRemote', () => gitMock);
 };
 
 describe('The utility for testing lines of code changed', () => {
+  afterEach(() => {
+    gitMock.addRemote.restore();
+    gitMock.diffSummary.restore();
+    gitMock.fetch.restore();
+    gitMock.removeRemote.restore();
+  });
+
   it('returns true if the number of LOC changed between current HEAD and the remote is less ' +
     'than the maximum LOC number indicated', done => {
     setupTest(false, false, 100, 100);
