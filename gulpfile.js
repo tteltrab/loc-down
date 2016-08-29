@@ -1,6 +1,7 @@
 'use strict';
 
 const babel = require('babel-register');
+const coveralls = require('gulp-coveralls');
 const eslint = require('gulp-eslint');
 const gulp = require('gulp');
 const isparta = require('isparta');
@@ -45,5 +46,14 @@ gulp.task('mocha', () =>
       }));
   })
 );
+
+gulp.task('coveralls', () => {
+  if (!process.env.CI) {
+    return false;
+  }
+
+  return gulp.src('./coverage/lcov.info')
+    .pipe(coveralls());
+});
 
 gulp.task('test', ['eslint', 'mocha']);

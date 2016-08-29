@@ -12,3 +12,5 @@ deploy:
 branches:
   only:
     - master
+after_script:
+ - ./node_modules/.bin/gulp coveralls
