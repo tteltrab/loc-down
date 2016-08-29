@@ -1,4 +1,4 @@
-# loc-down [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+# loc-down [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![dependencies Status][david-image]][david-url] [![devDependencies Status][david-dev-image]][david-dev-url]
 > check number lines of code changed
 
 <img alt="John Locke smiling" src="https://cloud.githubusercontent.com/assets/1487463/18031721/a09417b2-6cbb-11e6-8edc-fd90d95e3729.gif" height="200">
@@ -43,3 +43,10 @@ MIT © [Nick Bartlett]()
 [npm-url]: https://npmjs.org/package/loc-down
 [travis-image]: https://travis-ci.org/tteltrab/loc-down.svg?branch=master
 [travis-url]: https://travis-ci.org/tteltrab/loc-down
+[coveralls-image]: https://coveralls.io/repos/github/tteltrab/loc-down/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/tteltrab/loc-down?branch=master
+[david-image]: https://david-dm.org/tteltrab/loc-down/status.svg
+[david-url]: https://david-dm.org/tteltrab/loc-down
+[david-dev-image]: https://david-dm.org/tteltrab/loc-down/dev-status.svg
+[david-dev-url]: https://david-dm.org/tteltrab/loc-down?type=dev
+
