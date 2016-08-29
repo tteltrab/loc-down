@@ -1,16 +1,18 @@
+sudo: false
 language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
 node_js:
-- '6.2'
-deploy:
-  provider: npm
-  email: tteltrab@live.unc.edu
-  api_key:
-    secure: vXmv8/LD7/YeSBWD790rEoTvSp51GXWgfDrRs3NGiweZBjcZ6YhlYTUtAZ0oKa4w9XREDcyO8nQ3fxCUT5jHd5bY9upWEhSmSqM7bSGbtDApVPjarZ6F5SH59Q5Nqt5EpNxKtaKxd2g9vumuLJfjznLHLhmW/036+XYDgNrba00yVlUCKXw0xopAY0T4u4mdwzKaA1dNoo5Hwub7WiCdn5OzoWwsXTfu9FEez3LDdWktSg4KM4aD/mEZbLTU97fGdsjtsrwMmv9JQhDg/PYLCtwtBVtbp17XmCrxpDEBjgEZtwCqKEQSCLRu3qSR8aYFBFvqKGaDCVLWX3ffwcJBqRfpO4Vgozdple/OsRBJem0Abo/bWXvcaUdr1sDhxc33iL0u4gvZn2ijBUsNYk5K+I4SeW4Ks+qXV5wp0CdC+9YYbW6edrZw/LuaccNKqlu+Ef2M+Bp4q0AgoHyGtMG2RBzf+065Rp+gHnyvbGMhpYGcHp2qtSSKxXAkmLJXzC4PYoeGy8gpbO144MN5oV8tJNV+CsdcGpbi3t83njhEKcvSlHf1ve8tKg81SJClrCugZOCiWAYehM+F0+Ec8K59kXN9RUDQKi1Q9L479E1Jie8cyYSf+TRxiBfGJ1gerRCyDPlU01f7NU/UOt3gV/hN01+Xftt/A5qGg1GVArtq+9E=
-  on:
-    tags: true
-    repo: tteltrab/loc-down
+  - '6.2'
 branches:
   only:
     - master
+script:
+  - npm run test
 after_script:
- - ./node_modules/.bin/gulp coveralls
+  - ./node_modules/.bin/gulp coveralls
+after_success:
+  - npm run semantic-release

@@ -1,16 +1,22 @@
 {
   "name": "loc-down",
-  "version": "1.0.0",
   "description": "test lines of code",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
-  "repository": "https://github.com/tteltrab/loc-down",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tteltrab/loc-down.git"
+  },
   "author": "Nick Bartlett",
   "keywords": [
+    "git",
     "diff",
-    "loc"
+    "loc",
+    "lines",
+    "code"
   ],
   "dependencies": {
     "randomstring": "^1.1.5",
@@ -28,7 +34,8 @@
     "gulp-mocha": "^3.0.1",
     "isparta": "^4.0.0",
     "rewire": "^2.5.2",
-    "sinon": "^1.17.5"
+    "sinon": "^1.17.5",
+    "semantic-release": "^4.3.5"
   },
   "license": "MIT",
   "engines": {
