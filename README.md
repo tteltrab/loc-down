@@ -27,7 +27,7 @@ locDown('git@github.com:tteltrab/loc-down.git', 'master', 200)
 
 Determine if loc difference from `repo/branch` is less than or equal to `loc`.
 
-* `repo` `{String}` url representation fo the repo against which diffs will be done
+* `repo` `{String}` url representation for the repo against which diffs will be done
 * `branch` `{String}` name of the branch to diff against
 * `loc` `{Number}` number which indicates the maximum lines of code which should be changed
 
