@@ -1,6 +1,6 @@
 {
   "name": "loc-down",
-  "description": "test lines of code",
+  "description": "check number lines of code changed",
   "main": "index.js",
   "scripts": {
     "test": "gulp test",
